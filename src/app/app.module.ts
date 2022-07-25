@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
 import { TextComponent } from './inputs/text.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -23,13 +22,7 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatIconModule,
   ],
-  declarations: [
-    TextComponent,
-    AppComponent,
-    HelloComponent,
-    AsFormControlPipe,
-  ],
-  exports: [TextComponent],
+  declarations: [TextComponent, AppComponent, AsFormControlPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
