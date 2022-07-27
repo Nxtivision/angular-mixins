@@ -15,21 +15,12 @@ import { BaseInjectorConstructor } from './base-class-injector';
 export const CVA_CONNECTOR_METADATA = {
   host: {
     '[class.one-forms-input]': 'hostClass',
-    '[style.user-select]': 'userSelectMode',
-    '[style.display]': 'hostDisplay',
-    '[class.without-label]': 'hostWithoutLabel',
-    '[style.width]': 'width',
   },
   inputs: [
     'label',
     'formControl',
     'formControlName',
-    'placeholder',
     'description',
-    'required',
-    'readonly',
-    'customErrors',
-    'width',
   ],
 };
 
@@ -53,20 +44,6 @@ export const CvaConnectorMixin = <TBase extends BaseInjectorConstructor>(
     @HostBinding('class.one-forms-input')
     hostClass = true;
 
-    /** Update user-select CSS property */
-    @HostBinding('style.user-select')
-    userSelectMode = 'auto';
-    /**
-     * Used to implement the display CSS property directly on the host
-     */
-    @HostBinding('style.display') hostDisplay = 'inline-block';
-
-    /**
-     * Set style width property for this control.
-     *
-     * @default '100%'
-     */
-    @HostBinding('style.width') @Input() width = '100%';
     /**
      * @internal
      *
@@ -88,37 +65,10 @@ export const CvaConnectorMixin = <TBase extends BaseInjectorConstructor>(
     formControlName = '';
 
     /**
-     * Placeholder of the input, when there is no user input
-     */
-    @Input()
-    placeholder = '';
-
-    /**
      * Label to name the input
      */
     @Input()
     label = '';
-
-    /**
-     * Whether to require the field, so it must be filled
-     */
-    @Input()
-    required = false;
-
-    /**
-     * Whether to mark this field as readonly, so the user can only consult the data
-     */
-    @Input()
-    readonly = false;
-
-    /**
-     * Add without-label class to the host component if no label specified
-     * @protected
-     */
-    @HostBinding('class.without-label')
-    get hostWithoutLabel() {
-      return this.label === '';
-    }
 
     /**
      * The message to describe the input by setting the mat-hint
@@ -142,6 +92,7 @@ export const CvaConnectorMixin = <TBase extends BaseInjectorConstructor>(
      * @see ControlContainer
      */
     get controlContainer() {
+      // ERROR: injector is undefined
       return this.injector.get(ControlContainer);
     }
 

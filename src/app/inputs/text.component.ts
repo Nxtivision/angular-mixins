@@ -2,8 +2,6 @@ import {
   Component,
   forwardRef,
   HostBinding,
-  Inject,
-  Injector,
   Input,
   OnInit,
 } from '@angular/core';
